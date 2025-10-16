@@ -1,15 +1,61 @@
+:root {
+    --bs-body-bg: rgb(240, 240, 240) !important;
+    --bs-bg-white: #ffffff !important;
+    
+    /* Input */
+    --bs-input-bg: rgb(243, 245, 255) !important;
+    --bs-input-color: rgb(144, 152, 199) !important;
+    --bs-input-bg-checked: rgb(94, 117, 218) !important;
+    --bs-input-color-checked: #e6f5ff !important;
+    --bs-input-bg-checked-hover: rgb(108, 131, 233) !important;
+    --bs-input-border-color: rgb(226, 232, 238) !important;
+    --bs-input-border-color-checked: rgb(94, 117, 218) !important;
+    --bs-input-border-color-checked-hover: rgb(108, 131, 233) !important;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background: var(--bs-body-bg);
     background-color: var(--bs-body-bg);
 }
 
-:root {
-    --bs-body-bg: rgb(240, 240, 240);
+html[data-bs-theme="dark"]{
+    --bs-body-bg: #171717 !important;
+    --bs-bg-white: #232323 !important;
+
+    /* Input */
+    --bs-input-bg: rgb(51, 52, 54) !important;
+    --bs-input-color: rgb(119, 122, 139) !important;
+    --bs-input-bg-checked: rgb(67, 82, 151) !important;
+    --bs-input-color-checked: #e6f5ff !important;
+    --bs-input-bg-checked-hover: rgb(85, 102, 175) !important;
+    --bs-input-border-color: rgb(43, 47, 51) !important;
+    --bs-input-border-color-checked: rgb(53, 59, 85) !important;
+    --bs-input-border-color-checked-hover: rgb(85, 102, 175) !important;
 }
 
-html[data-bs-theme="dark"]{
-    --bs-body-bg: #0f1720;
+.bg-white {
+    background-color: var(--bs-bg-white) !important;
+}
+
+.btn-permisos input + label {
+    color: var(--bs-input-color) !important;
+    background-color: var(--bs-input-bg) !important;
+    border: solid 1px var(--bs-input-border-color) !important;
+    transition: all 0.1s ease-in-out;
+}
+.btn-permisos input:checked + label {
+    color: var(--bs-input-color-checked) !important;
+    border: solid 1px var(--bs-input-border-color-checked) !important;
+    background-color: var(--bs-input-bg-checked) !important;
+}
+.btn-permisos input:hover + label:hover {
+    color: var(--bs-input-color-checked) !important;
+    background-color: var(--bs-input-bg-checked) !important;
+}
+.btn-permisos input:checked:hover + label:hover {
+    background-color: var(--bs-input-bg-checked-hover) !important;
 }

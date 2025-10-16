@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous">
     <!-- Font Awesome -->
     <link
         rel="stylesheet"
@@ -17,26 +20,226 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="theme-toggle" class="btn btn-secondary position-fixed p-0 top-0 end-0 m-3"
+    <button id="theme-toggle" class="d-flex align-items-center justify-content-center btn btn-secondary position-fixed top-0 end-0 m-3 rounded-circle z-1"
         style="width: 2rem; height: 2rem;" onclick="toggleDarkMode()">
         <i class="fas fa-moon"></i>
     </button>
-    <div class="container mt-5 border border-light-subtle p-5 rounded-4 shadow">
-        <h1 class="mb-4">Welcome to My Website</h1>
-        <p>This is a simple webpage using Bootstrap and Font Awesome.</p>
-        <button class="btn btn-primary">
-            <i class="fas fa-thumbs-up"></i> Like
-        </button>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            This is some text within a card body.
+    <form class="container d-flex flex-column gap-3 mt-4 needs-validation" novalidate>
+        <div class="card rounded-pill shadow-sm border bg-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill col-2"></button>
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill col-2"></button>
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill col-2"></button>
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill col-2"></button>
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill col-2"></button>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- Datos del usuario -->
+        <div class="card bg-white border shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h6 class="fw-semibold">Datos del usuario</h6>
+                <div class="d-flex flex-column gap-2 mt-3">
+                    <div class="row">
+                        <label for="nombre-empleado" class="col-4 col-form-label">Nombre del empleado</label>
+                        <div class="col-8">
+                            <input type="text" class="form-control bg-transparent" id="nombre-empleado" placeholder="Angel Hernandez Sánchez" required>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="numero-personal" class="col-4 col-form-label">Número de personal</label>
+                        <div class="col-8">
+                            <input type="text" class="form-control bg-transparent" id="numero-personal" placeholder="123456789" required>
+                            <div class="invalid-feedback">Por favor ingresa tu número de personal.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="unidad-responsable-clave" class="col-4 col-form-label">Unidad Responsable</label>
+                        <div class="col-8">
+                            <div class="row g-2">
+                                <div class="col-3">
+                                    <input type="text" class="form-control bg-transparent" id="unidad-responsable-clave" placeholder="Clave" required>
+                                    <div class="invalid-feedback">Ingresa la clave.</div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control bg-transparent" id="unidad-responsable-nombre" placeholder="Nombre" required>
+                                    <div class="invalid-feedback">Ingresa el nombre.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="region-clave" class="col-4 col-form-label">Región</label>
+                        <div class="col-8">
+                            <div class="row g-2">
+                                <div class="col-3">
+                                    <input type="text" class="form-control bg-transparent" id="region-clave" placeholder="Clave" required>
+                                    <div class="invalid-feedback">Ingresa la clave.</div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control bg-transparent" id="region-nombre" placeholder="Nombre" required>
+                                    <div class="invalid-feedback">Ingresa el nombre.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="puesto-empleado" class="col-4 col-form-label">Puesto del empleado</label>
+                        <div class="col-8">
+                            <input type="text" class="form-control bg-transparent" id="puesto-empleado" placeholder="Jefe de la Unidad" required>
+                            <div class="invalid-feedback">Por favor ingresa tu puesto del empleado.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seleccion Permisos -->
+        <div class="card bg-white border shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h6 class="fw-semibold">Tipo de Permiso</h6>
+                <div class="d-flex flex-fill gap-3 mt-3">
+                    <div class="btn-permisos flex-grow-1">
+                        <input type="radio" class="btn-check" name="permisos" id="alta" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2 w-100" style="font-weight: 600;" for="alta">
+                            Alta
+                        </label>
+                    </div>
+                    <div class="btn-permisos flex-grow-1">
+                        <input type="radio" class="btn-check" name="permisos" id="modificacion" autocomplete="off" checked>
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2 w-100" style="font-weight: 600;" for="modificacion">
+                            Modificación
+                        </label>
+                    </div>
+                    <div class="btn-permisos flex-grow-1">
+                        <input type="radio" class="btn-check" name="permisos" id="baja" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2 w-100" style="font-weight: 600;" for="baja">
+                            Baja
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h6 class="fw-semibold">Grupo o Permiso Solicitado</h6>
+                <div class="text-muted" style="font-size: 0.9rem;">
+                    Puede seleccionar más de uno:
+                </div>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="director" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="director">
+                            DIRECTOR (Director de UR)
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="director-general" autocomplete="off" checked>
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="director-general">
+                            DIRECTOR GENERAL (Director de URC)
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="administrador" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="administrador">
+                            ADMINISTRADOR
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="auxiliar-administrativo" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="auxiliar-administrativo">
+                            AUXILIAR ADMINISTRATIVO
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="responsable-proyecto" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="responsable-proyecto">
+                            RESPONSABLE DE PROYECTO
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="responsable-control-bienes" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="responsable-control-bienes">
+                            RESPONSABLE DE CONTROL DE BIENES
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="estudiantes" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="estudiantes">
+                            ESTUDIANTES (Generación de Formatos de Pago)
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="eventos-ingreso" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="eventos-ingreso">
+                            EVENTOS INGRESO
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="supervisor" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="supervisor">
+                            SUPERVISOR
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="cajeros" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="cajeros">
+                            CAJEROS
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="revisor" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="revisor">
+                            REVISOR (Indicar qué tipo de revisión requiere)
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="otro-grupo" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="otro-grupo">
+                            OTRO GRUPO
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="ur-adicional" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="ur-adicional">
+                            UR adicional
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="permiso-especifico" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="permiso-especifico">
+                            Permiso específico
+                        </label>
+                    </div>
+                    <div class="btn-permisos">
+                        <input type="checkbox" class="btn-check" id="asignar-permisos-similares-otro-usuario" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="asignar-permisos-similares-otro-usuario">
+                            Asignar permisos similares a otro usuario
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Especificaciones -->
+                <h6 class="fw-semibold">Especificaciones</h6>
+                <textarea class="form-control bg-transparent mt-3" id="especificaciones" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="card bg-white border shadow-sm rounded-4 mb-4">
+            <div class="card-body text-end">
+                <button type="submit" class="btn btn-primary w-auto">Enviar</button>
+            </div>
+        </div>
+    </form>
 
     <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="main.js"></script>
     
 </body>
