@@ -3,4 +3,13 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--bs-body-bg);
+}
+
+:root {
+    --bs-body-bg: rgb(240, 240, 240);
+}
+
+html[data-bs-theme="dark"]{
+    --bs-body-bg: #0f1720;
 }
