@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +17,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <div class="container mt-5">
+    <button id="theme-toggle" class="btn btn-secondary position-fixed p-0 top-0 end-0 m-3"
+        style="width: 2rem; height: 2rem;" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="container mt-5 border border-light-subtle p-5 rounded-4 shadow">
         <h1 class="mb-4">Welcome to My Website</h1>
         <p>This is a simple webpage using Bootstrap and Font Awesome.</p>
         <button class="btn btn-primary">
             <i class="fas fa-thumbs-up"></i> Like
         </button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            This is some text within a card body.
+        </div>
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
