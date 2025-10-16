@@ -24,7 +24,7 @@
         style="width: 2rem; height: 2rem;" onclick="toggleDarkMode()">
         <i class="fas fa-moon"></i>
     </button>
-    <form class="container d-flex flex-column gap-3 mt-4 needs-validation" novalidate>
+    <form id="form-solicitud" class="container d-flex flex-column gap-3 mt-4 needs-validation" novalidate>
         <div class="card rounded-pill shadow-sm border bg-white">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
@@ -130,92 +130,92 @@
                 </div>
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="director" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="director">
+                        <input type="checkbox" class="btn-check" id="btn-check-director" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-director">
                             DIRECTOR (Director de UR)
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="director-general" autocomplete="off" checked>
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="director-general">
+                        <input type="checkbox" class="btn-check" id="btn-check-director-general" autocomplete="off" checked>
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-director-general">
                             DIRECTOR GENERAL (Director de URC)
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="administrador" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="administrador">
+                        <input type="checkbox" class="btn-check" id="btn-check-admin" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-admin">
                             ADMINISTRADOR
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="auxiliar-administrativo" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="auxiliar-administrativo">
+                        <input type="checkbox" class="btn-check" id="btn-check-aux-admin" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-aux-admin">
                             AUXILIAR ADMINISTRATIVO
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="responsable-proyecto" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="responsable-proyecto">
+                        <input type="checkbox" class="btn-check" id="btn-check-res-proy" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-res-proy">
                             RESPONSABLE DE PROYECTO
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="responsable-control-bienes" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="responsable-control-bienes">
+                        <input type="checkbox" class="btn-check" id="btn-check-res-cb" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-res-cb">
                             RESPONSABLE DE CONTROL DE BIENES
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="estudiantes" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="estudiantes">
+                        <input type="checkbox" class="btn-check" id="btn-check-estudiantes" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-estudiantes">
                             ESTUDIANTES (Generación de Formatos de Pago)
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="eventos-ingreso" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="eventos-ingreso">
+                        <input type="checkbox" class="btn-check" id="btn-check-eventos" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-eventos">
                             EVENTOS INGRESO
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="supervisor" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="supervisor">
+                        <input type="checkbox" class="btn-check" id="btn-check-supervisor" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-supervisor">
                             SUPERVISOR
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="cajeros" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="cajeros">
+                        <input type="checkbox" class="btn-check" id="btn-check-cajeros" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-cajeros">
                             CAJEROS
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="revisor" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="revisor">
+                        <input type="checkbox" class="btn-check" id="btn-check-revisor" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-revisor">
                             REVISOR (Indicar qué tipo de revisión requiere)
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="otro-grupo" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="otro-grupo">
+                        <input type="checkbox" class="btn-check" id="btn-check-otro" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-otro">
                             OTRO GRUPO
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="ur-adicional" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="ur-adicional">
+                        <input type="checkbox" class="btn-check" id="btn-check-ur-adicional" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-ur-adicional">
                             UR adicional
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="permiso-especifico" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="permiso-especifico">
+                        <input type="checkbox" class="btn-check" id="btn-check-permiso-esp" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-permiso-esp">
                             Permiso específico
                         </label>
                     </div>
                     <div class="btn-permisos">
-                        <input type="checkbox" class="btn-check" id="asignar-permisos-similares-otro-usuario" autocomplete="off">
-                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="asignar-permisos-similares-otro-usuario">
+                        <input type="checkbox" class="btn-check" id="btn-check-permiso-similar" autocomplete="off">
+                        <label class="btn btn-sm shadow-sm border-0 rounded-4 p-2" style="font-weight: 600;" for="btn-check-permiso-similar">
                             Asignar permisos similares a otro usuario
                         </label>
                     </div>
@@ -225,7 +225,7 @@
 
                 <!-- Especificaciones -->
                 <h6 class="fw-semibold">Especificaciones</h6>
-                <textarea class="form-control bg-transparent mt-3" id="especificaciones" rows="3"></textarea>
+                <textarea class="form-control bg-transparent mt-3" id="especificaciones" rows="3" placeholder="Deshabilitado..." disabled></textarea>
             </div>
         </div>
 
