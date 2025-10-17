@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', () => {
             otroGrupo: document.getElementById('btn-check-otro').checked,
             urAdic: document.getElementById('btn-check-ur-adicional').checked,
             permEsp: document.getElementById('btn-check-permiso-esp').checked,
-            aPSOU: document.getElementById('btn-check-permiso-similar').checked,
+            asigPerm: document.getElementById('btn-check-permiso-similar').checked,
         };
 
         console.log("Datos a enviar:", datos);
 
         // 5. Envía los datos a la Netlify Function
         try {
-            const response = await fetch('/netlify/functions/generar-documento', { 
+            const response = await fetch('/.netlify/functions/generar-documento', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

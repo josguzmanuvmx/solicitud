@@ -1,0 +1,16 @@
+{
+  "name": "solicitud-uv",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@netlify/functions": "^2.8.1",
+    "@supabase/supabase-js": "^2.44.2",
+    "angular-expressions": "^1.4.3",
+    "docxtemplater": "^3.47.4",
+    "pizzip": "^3.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.3"
+  }
+}
