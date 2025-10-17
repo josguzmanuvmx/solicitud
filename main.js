@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 5. Envía los datos a la Netlify Function
         try {
-            const response = await fetch('/.netlify/functions/generar-documento', { 
+            const response = await fetch('/netlify/functions/generar-documento', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
