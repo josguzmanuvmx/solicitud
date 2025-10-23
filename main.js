@@ -1,3 +1,19 @@
+// 1. Seleccionar los elementos del DOM
+const textArea = document.getElementById('especificaciones');
+const contador = document.getElementById('contador');
+
+// 2. Obtener el límite máximo de caracteres del atributo del textarea
+const maxLength = textArea.getAttribute('maxlength');
+
+// 3. Añadir un "escuchador de eventos" que se active con cada tecla presionada
+textArea.addEventListener('input', () => {
+    const caracteresEscritos = textArea.value.length;
+    const caracteresRestantes = maxLength - caracteresEscritos;
+
+    // 4. Actualizar el texto del contador
+    contador.textContent = `${caracteresRestantes}/${maxLength}`;
+});
+
 /**
  * Actualiza el ícono del tema basado en el estado ACTUAL del HTML.
  * Muestra 'fa-sun' (sol) si el tema es 'dark'.
@@ -85,6 +101,50 @@ Array.from(forms).forEach(form => {
     }, false)
 })
 
+function obtenerDatosFormulario() {
+    return {
+        // Fecha (se genera automáticamente)
+        d: new Date().getDate(),
+        m: new Date().getMonth() + 1, // +1 porque los meses son 0-11
+        a: new Date().getFullYear(),
+
+        // Datos del Usuario
+        nombreEmpleado: document.getElementById('nombre-empleado').value,
+        noPersonal: document.getElementById('numero-personal').value,
+        correoInst: document.getElementById('correo-institucional').value,
+        uRC: document.getElementById('unidad-responsable-clave').value,
+        uRN: document.getElementById('unidad-responsable-nombre').value,
+        rC: document.getElementById('region-clave').value,
+        rN: document.getElementById('region-nombre').value,
+        puestoEmpleado: document.getElementById('puesto-empleado').value,
+
+        // Tipo de Permiso (Radio Buttons)
+        // Busca el radio 'checked' dentro del grupo 'permisos' y obtiene su 'id'
+        tipoPermiso: document.querySelector('input[name="permisos"]:checked').id,
+        
+        // Grupos (Botones Checkbox)
+        // .checked devuelve 'true' o 'false'
+        director: document.getElementById('check-director').checked,
+        dirGen: document.getElementById('check-director-general').checked,
+        admin: document.getElementById('check-admin').checked,
+        auxAdmin: document.getElementById('check-aux-admin').checked,
+        resProy: document.getElementById('check-res-proy').checked,
+        resCB: document.getElementById('check-res-cb').checked,
+        estudi: document.getElementById('check-estudiantes').checked,
+        eveIng: document.getElementById('check-eventos').checked,
+        super: document.getElementById('check-supervisor').checked,
+        cajeros: document.getElementById('check-cajeros').checked,
+        revisor: document.getElementById('check-revisor').checked,
+        otroGrupo: document.getElementById('check-otro').checked,
+        urAdic: document.getElementById('check-ur-adicional').checked,
+        permEsp: document.getElementById('check-permiso-esp').checked,
+        asigPerm: document.getElementById('check-permiso-similar').checked,
+
+        // Especificaciones es un textarea
+        especificaciones: document.getElementById('especificaciones').value,
+    };
+}
+
 // Espera a que todo el contenido HTML se cargue antes de ejecutar el script
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -104,48 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Recopila todos los datos del formulario
         // Asegúrate de que los IDs aquí coincidan EXACTAMENTE con los de tu HTML
-        const datos = {
-            // Fecha (se genera automáticamente)
-            d: new Date().getDate(),
-            m: new Date().getMonth() + 1, // +1 porque los meses son 0-11
-            a: new Date().getFullYear(),
-
-            // Datos del Usuario
-            nombreEmpleado: document.getElementById('nombre-empleado').value,
-            noPersonal: document.getElementById('numero-personal').value,
-            correoInst: document.getElementById('correo-institucional').value,
-            uRC: document.getElementById('unidad-responsable-clave').value,
-            uRN: document.getElementById('unidad-responsable-nombre').value,
-            rC: document.getElementById('region-clave').value,
-            rN: document.getElementById('region-nombre').value,
-            puestoEmpleado: document.getElementById('puesto-empleado').value,
-
-            // Tipo de Permiso (Radio Buttons)
-            // Busca el radio 'checked' dentro del grupo 'permisos' y obtiene su 'id'
-            tipoPermiso: document.querySelector('input[name="permisos"]:checked').id,
-            
-            // Grupos (Botones Checkbox)
-            // .checked devuelve 'true' o 'false'
-            director: document.getElementById('btn-check-director').checked,
-            dirGen: document.getElementById('btn-check-director-general').checked,
-            admin: document.getElementById('btn-check-admin').checked,
-            auxAdmin: document.getElementById('btn-check-aux-admin').checked,
-            resProy: document.getElementById('btn-check-res-proy').checked,
-            resCB: document.getElementById('btn-check-res-cb').checked,
-            estudi: document.getElementById('btn-check-estudiantes').checked,
-            eveIng: document.getElementById('btn-check-eventos').checked,
-            super: document.getElementById('btn-check-supervisor').checked,
-            cajeros: document.getElementById('btn-check-cajeros').checked,
-            revisor: document.getElementById('btn-check-revisor').checked,
-            otroGrupo: document.getElementById('btn-check-otro').checked,
-            urAdic: document.getElementById('btn-check-ur-adicional').checked,
-            permEsp: document.getElementById('btn-check-permiso-esp').checked,
-            asigPerm: document.getElementById('btn-check-permiso-similar').checked,
-        };
+        const datos = obtenerDatosFormulario();
 
         console.log("Datos a enviar:", datos);
 
-        // 5. Envía los datos a la Netlify Function
         try {
             const response = await fetch('/.netlify/functions/generar-documento', { 
                 method: 'POST',
@@ -195,3 +217,105 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+async function descargarWord(datos) {
+    // 5. Envía los datos a la Netlify Function
+    try {
+        const response = await fetch('/.netlify/functions/generar-documento', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Convierte el objeto JavaScript a un string JSON
+            body: JSON.stringify(datos) 
+        });
+
+        if (!response.ok) {
+            // Si el servidor (función) da un error, lo captura aquí
+            throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+        }
+
+        // 6. Recibe el archivo .docx como un 'blob' (un archivo binario)
+        const blob = await response.blob();
+
+        // 7. Crea un link de descarga en memoria
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'solicitud-completada.docx'; // Nombre del archivo que se descargará
+
+        // 8. Simula un clic en el link para iniciar la descarga
+        document.body.appendChild(a);
+        a.click();
+
+        // 9. Limpia la URL del 'blob' de la memoria
+        window.URL.revokeObjectURL(url);
+        a.remove();
+
+        console.log("¡Documento generado y descargado!");
+        
+        // (Opcional) Limpia el formulario o muestra un mensaje de éxito
+        // form.reset();
+        // alert('Solicitud generada con éxito.');
+
+    } catch (error) {
+        // 10. Maneja cualquier error de red o del servidor
+        console.error('Error al generar el documento:', error);
+        alert('Error: No se pudo generar el documento. Revisa la consola para más detalles.');
+    } finally {
+        // (Opcional) Vuelve a habilitar el botón de envío
+        // ej: event.submitter.disabled = false;
+    }
+}
+
+async function descargarPDF(datos) {
+    // 5. Envía los datos a la Netlify Function
+    try {
+        const response = await fetch('/.netlify/functions/generar-documento', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Convierte el objeto JavaScript a un string JSON
+            body: JSON.stringify(datos) 
+        });
+
+        if (!response.ok) {
+            // Si el servidor (función) da un error, lo captura aquí
+            throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+        }
+
+        // 6. Recibe el archivo .docx como un 'blob' (un archivo binario)
+        const blob = await response.blob();
+
+        // 7. Crea un link de descarga en memoria
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'solicitud-completada.docx'; // Nombre del archivo que se descargará
+
+        // 8. Simula un clic en el link para iniciar la descarga
+        document.body.appendChild(a);
+        a.click();
+
+        // 9. Limpia la URL del 'blob' de la memoria
+        window.URL.revokeObjectURL(url);
+        a.remove();
+
+        console.log("¡Documento generado y descargado!");
+        
+        // (Opcional) Limpia el formulario o muestra un mensaje de éxito
+        // form.reset();
+        // alert('Solicitud generada con éxito.');
+
+    } catch (error) {
+        // 10. Maneja cualquier error de red o del servidor
+        console.error('Error al generar el documento:', error);
+        alert('Error: No se pudo generar el documento. Revisa la consola para más detalles.');
+    } finally {
+        // (Opcional) Vuelve a habilitar el botón de envío
+        // ej: event.submitter.disabled = false;
+    }
+}

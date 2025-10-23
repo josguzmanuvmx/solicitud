@@ -59,3 +59,7 @@ html[data-bs-theme="dark"]{
 .btn-permisos input:checked:hover + label:hover {
     background-color: var(--bs-input-bg-checked-hover) !important;
 }
+
+#info-basica input, #info-basica label, .form-select {
+    padding: 0.25rem 0.5rem !important;
+}
